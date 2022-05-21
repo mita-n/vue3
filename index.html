@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <form v-on:submit.prevent><!--submitを強制無効-->
+            <input type="text" v-model="newItem">
+            <button v-on:click="addItem">Add</button>
+        </form>
+        <ul>
+            <li v-for="todo in todos">
+                <!--チェックボックスのデフォルト false　チェックするとtrueになる-->
+                <input type="checkbox" v-model="todo.isDone">
+                <!--v-bind:class でdoneというクラスを追加-->
+                <span v-bind:class="{done: todo.isDone}">{{todo.item}}</span>
+            </li>
+        </ul>
+        <ul>
+            <select >
+                <option>選択してください</option>
+                <option v-for="todo in todos">{{todo.item}}</option>
+            </select>
+        </ul>
+    <pre>{{$data}}</pre>
+    </div>
+    <script src="https://unpkg.com/vue@3.1.5"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
