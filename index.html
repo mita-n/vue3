@@ -13,12 +13,18 @@
             <input type="text" v-model="newItem">
             <button v-on:click="addItem">Add</button>
         </form>
-        <ul>
-            <li v-for="todo in todos">
+        <ul><!--todosをtodo(value)とindex(インデックス)に分ける-->
+            <li v-for="(todo,index) in todos">
                 <!--チェックボックスのデフォルト false　チェックするとtrueになる-->
                 <input type="checkbox" v-model="todo.isDone">
                 <!--v-bind:class でdoneというクラスを追加-->
-                <span v-bind:class="{done: todo.isDone}">{{todo.item}}</span>
+                <span v-bind:class="{done: todo.isDone}">
+                    {{todo.item}}
+                </span>
+                <!--削除ボタン-->
+                <button v-on:click="deleteItem(index)">
+                    Delete
+                </button>
             </li>
         </ul>
         <ul>
@@ -27,7 +33,7 @@
                 <option v-for="todo in todos">{{todo.item}}</option>
             </select>
         </ul>
-    <pre>{{$data}}</pre>
+    <!--<pre>{{$data}}</pre>-->
     </div>
     <script src="https://unpkg.com/vue@3.1.5"></script>
     <script src="js/main.js"></script>
