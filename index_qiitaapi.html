@@ -60,7 +60,8 @@
                     }
                     this.message = 'Loading...'
                     const vm = this
-                    //page : 検索結果1ページ目を取得 per_page : 1画面の表示件数 query : 検索キーワード
+                    //page : 検索結果1ページ目を取得 per_page : 1画面の表示件数(ページネーション) query : 検索キーワード
+                    //これはqiita API指定のパラメータ https://qiita.com/api/v2/docs#get-apiv2items
                     const params = {page : 1, per_page : 20, query : this.keyword}
                     //getメソッドでaxiosにアクセス
                     const url = 'https://qiita.com/api/v2/items'
