@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="stylesheet" href="css/main.css">-->
+    <style>
+        [v-cloak]{
+            display :none;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+        <!--computedとwatcherどちらでも実装できるやつ-->
+    <div id="app">
+        <p>名前<input type="text" v-model="firstName"></p>
+        <p>苗字<input type="text" v-model="lastName"></p>
+        <p>フルネーム: <span v-cloak>{{fullName}}</span></p>
+    <!--<pre>{{$data}}</pre>-->
+    </div>
+    <script src="https://unpkg.com/vue@3.1.5"></script>
+    <script>
+        const app = Vue.createApp({
+            data : () => ({
+                firstName : '',
+                lastName : '',
+                /*fullName : '',*/
+            }),
+            /*watch : {
+                firstName : function (value){
+                    this.fullName = value + ' ' + this.lastName
+                },
+                lastName : function (value){
+                    this.fullName = value +  ' ' + this.firstName
+                }
+            },*/
+            computed : {
+                fullName : function (){
+                    return this.firstName + ' ' + this.lastName
+                }
+            }
+        })
+        app.mount("#app")
+    </script>
+</body>
+</html>
