@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="stylesheet" href="css/main.css">-->
+    <style>
+
+    </style>
+    <title>Document</title>
+</head>
+<body>
+        <!--マスタッシュ構文内にもjavascriptの式をいれられるよという話
+        ただし単一式しか入れることができない-->
+    <div id="app">
+        <p>{{message}}</p>
+        <p>{{number + 1}}</p>
+        <!--文字列反転の関数を入れて反転を実践-->
+        <p>{{message.split('').reverse().join('')}}</p>
+        <!--三項演算子 ok がtrueならYESを表示しfalseならNOを返す-->
+        <p>{{ok ? 'YES' : 'NO'}}</p>
+    <!--<pre>{{$data}}</pre>-->
+    </div>
+    <script src="https://unpkg.com/vue@3.1.5"></script>
+    <script>
+        const app = Vue.createApp({
+            data : () => ({
+                message : 'hello vue.js',
+                number : 100,
+                ok : false,
+            }),
+        })
+        app.mount("#app")
+    </script>
+</body>
+</html>
