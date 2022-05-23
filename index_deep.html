@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="stylesheet" href="css/main.css">-->
+    <style>
+
+    </style>
+    <title>Document</title>
+</head>
+<body>
+        <!--watchは処理がネストされていると無効になるがdeepオプションを
+        使用するとネストされていても処理を実行することができる-->
+    <div id="app">
+        <ul>
+            <li v-for="color in colors">
+                {{color.name}}
+            </li>
+        </ul>
+        <button @click="onClick">Click</button>
+    <!--<pre>{{$data}}</pre>-->
+    </div>
+    <script src="https://unpkg.com/vue@3.1.5"></script>
+    <script>
+        const app = Vue.createApp({
+            data : () => ({
+                colors:[
+                    {name:'red'},
+                    {name:'green'},
+                    {name:'blue'},
+                ]
+            }),
+            watch : {
+                colors: {
+                    //handlerじゃないとダメっぽい
+                    //監視用のテンプレっぽい。。多分
+                    //https://v3.ja.vuejs.org/guide/migration/watch.html#%E6%A6%82%E8%A6%81
+                    handler: function(newValue,oldValue){
+                        console.log('update!!')
+                    },
+                    //deepを入れることでネストしていても検知することができる
+                    deep :true
+                }
+            },
+            //colorsを全部whiteに書き換える
+            //教材だとgreenのみ書き換えるだったがなんとなくforeachで全部変わるか試してみた
+            methods : {
+                onClick : function(){
+                    this.colors.forEach(function(e){
+                        e.name = 'white'
+                    })
+                    //this.colors[1].name = white
+                }
+            } 
+        })
+        app.mount("#app")
+    </script>
+</body>
+</html>
