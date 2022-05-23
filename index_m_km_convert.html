@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="stylesheet" href="css/main.css">-->
+    <style>
+
+    </style>
+    <title>Document</title>
+</head>
+<body>
+        <!--wathcherを応用してmとkmを相互変換するアプリケーション
+        余談：computedでgetterとsetterを使用して作ることもできる-->
+    <div id="app">
+        <p><input type="text" v-model="km">km</p>
+        <p><input type="text" v-model="m">m</p>
+
+    <!--<pre>{{$data}}</pre>-->
+    </div>
+    <script src="https://unpkg.com/vue@3.1.5"></script>
+    <script>
+        const app = Vue.createApp({
+            data : () => ({
+                km : 0,
+                m : 0,
+            }),
+            watch : {
+                km : function(value){
+                    console.log(value)
+                    this.km = value
+                    this.m = value * 1000
+                },
+                m : function(value){
+                    console.log(value)
+                    this.km = value / 1000
+                    this.m = value 
+                }
+            }
+        })
+        app.mount("#app")
+    </script>
+</body>
+</html>
