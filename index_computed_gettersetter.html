@@ -25,11 +25,11 @@
             }),
             computed : {
                 taxIncludedPrice: {
-                    //basePriceの値を「ゲットした時」に実行
+                    //basePriceの値を「ゲットした時」に実行(get=受け取る)
                     get : function() {
                         return this.basePrice * 1.1
                     },
-                    //自分自身(taxIncludedPrice)に値を「セットした時」に実行
+                    //自分自身(taxIncludedPrice)に値を「セットした時」に実行(set=送る)
                     set : function(value) {
                         this.basePrice = value / 1.1
                     }
