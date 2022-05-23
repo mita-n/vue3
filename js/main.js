@@ -2,6 +2,7 @@ const app = Vue.createApp({
     data : () => ({
         newItem : "",
         todos : [],
+        msg : 'hey'
     }),
     methods : {
         //アイテム追加のメソッド

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="stylesheet" href="css/main.css">-->
+    <style>
+
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <!--v-pre 要素とすべての子要素のコンパイルをスキップする
+    想定ケース：生のマスタッシュタグを表示とかディレクティブのない
+    大量のノードをスキップすることでコンパイルのスピードを上げる-->
+    <div id="app">
+        <!--v-preでコンパイルがスキップされたためマスタッシュ構文がそのまま出ている-->
+        <p v-pre>{{message}}</p>
+    <!--<pre>{{$data}}</pre>-->
+    </div>
+    <script src="https://unpkg.com/vue@3.1.5"></script>
+    <script>
+        const app = Vue.createApp({
+            data : () => ({
+                message : 'hello vuejs'
+            }),
+        })
+        app.mount("#app")
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="stylesheet" href="css/main.css">-->
+    <style>
+
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!--v-onceで一回のみ読み込みする なのでreverseのメソッドが無効になる-->
+        <p v-once>{{message}}</p>
+        <button @click="clickHandler">click</button>
+    <!--<pre>{{$data}}</pre>-->
+    </div>
+    <script src="https://unpkg.com/vue@3.1.5"></script>
+    <script>
+        const app = Vue.createApp({
+            data : () => ({
+                message : 'hello vue.js'
+            }),
+            methods : {
+                clickHandler : function(){
+                    //文字列の反転 splitで文字を配列に reverseで配列を逆向きに joinで配列を結合
+                    this.message = this.message.split('').reverse().join('')
+                }
+            }
+        })
+        app.mount("#app")
+    </script>
+</body>
+</html>
