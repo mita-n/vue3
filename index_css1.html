@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="stylesheet" href="css/main.css">-->
+    <style>
+        .large {
+            font-size: 36px;
+            color:blueviolet;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+        <!--vue.jsでのcss動的操作その1
+        ・css側でlargeクラスにフォントサイズ変更を適用
+        ・vueのdata内にisLargeというプロパティを作成しtrueかfalseでパラメータ設定
+        ・html側のクラス記述を v-bind:class="{large:isLarge}" とすることで
+        vueのtrue/falseでclassをオンオフできる
+        余談：v-bindは :　で省略できる(今回なら :class　とすることができる)-->
+    <div id="app">
+        <p v-bind:class="{large:isLarge}">{{message}}</p>
+        <p>tenka <span :class ="{large:isLarge}"> chan </span></p>
+        <button @click="toggle">css切り替え</button>
+    <!--<pre>{{$data}}</pre>-->
+    </div>
+    <script src="https://unpkg.com/vue@3.1.5"></script>
+    <script>
+        const app = Vue.createApp({
+            data : () => ({
+                message : "hello Vue.js",
+                isLarge : false
+            }),
+            methods : {
+                //ボタンをクリックしてcssのオンオフをするトグルボタン
+                toggle : function(){
+                    this.isLarge = !this.isLarge
+                }
+            }
+        })
+        app.mount("#app")
+    </script>
+</body>
+</html>
