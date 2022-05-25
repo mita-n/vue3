@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="stylesheet" href="css/main.css">-->
+    <style>
+        .large {
+            font-size: 36px;
+        }
+        .text-danger {
+            color:red;
+        }
+        .bg-gray {
+            background-color: gray;
+        }
+        .text-blue {
+            color:blue;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+        <!--v-bindでvueで設定したプロパティの値を文字列で出して
+        そのまま適用するということ
+        color:blue; font-size:36px にしているということと同義
+        ただし{}内でハイフンを使う場合は''で囲む必要がある-->
+    <div id="app">
+        <p>hello<span :style="{color:color,'font-size':fontSize + 'px'}">vue.js</span></p>
+    <!--<pre>{{$data}}</pre>-->
+    </div>
+    <script src="https://unpkg.com/vue@3.1.5"></script>
+    <script>
+        const app = Vue.createApp({
+            data : () => ({
+                color:'blue',
+                fontSize:36
+            }),
+        })
+        app.mount("#app")
+    </script>
+</body>
+</html>
