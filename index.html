@@ -50,8 +50,8 @@
         const promise2 = new Promise((resolve, reject) => {
             setTimeout(()=>{
                 console.log("resolveしたぁよ");
-            reject();
-        },1000)
+                reject();
+            },1000)
         }).then(() => {
             setTimeout(()=>{
                 console.log("resolveしたよ");
