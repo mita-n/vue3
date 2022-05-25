@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="stylesheet" href="css/main.css">-->
+    <style>
+        .large {
+            font-size: 36px;
+            color:blueviolet;
+        }
+        .text-danger {
+            color:red;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+        <!--複数のクラスを動的に扱う
+        カンマで区切ることでクラスを複数適用させることができる
+        注意：クラス名にハイフンが入っている場合はシングルクォートで囲む必要がある-->
+    <div id="app">
+        <p v-bind:class="{large:isLarge}">{{message}}</p>
+        <p>tenka <span :class ="{large:isLarge , 'text-danger' : hasError}"> chan </span></p>
+        <button @click="toggle">css切り替え</button>
+    <!--<pre>{{$data}}</pre>-->
+    </div>
+    <script src="https://unpkg.com/vue@3.1.5"></script>
+    <script>
+        const app = Vue.createApp({
+            data : () => ({
+                message : "hello Vue.js",
+                isLarge : false,
+                hasError: false,
+            }),
+            methods : {
+                //ボタンをクリックしてcssのtrue/falseを切り替えるトグルボタン
+                toggle : function(){
+                    this.isLarge = !this.isLarge
+                    this.hasError = !this.hasError
+                }
+            }
+        })
+        app.mount("#app")
+    </script>
+</body>
+</html>
