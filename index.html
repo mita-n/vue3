@@ -9,6 +9,7 @@
 </head>
 <body>
     <div id="app">
+        <div id="unchi"></div>
         <form v-on:submit.prevent><!--submitを強制無効-->
             <input type="text" v-model="newItem">
             <button v-on:click="addItem">Add</button>
@@ -56,7 +57,9 @@
                 console.log("resolveしたよ");
             },1000)
         }).catch(() => {
-            console.log("rejectしたよ");
+            document.body.style.backgroundColor = 'red';
+            document.getElementById('unchi').textContent = 'うんち'
+            console.log("1秒後にrejectしたよ。。うんち");
         });
         console.log(promise2)
     </script>
