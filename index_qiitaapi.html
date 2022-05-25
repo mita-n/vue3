@@ -67,6 +67,8 @@
                     const url = 'https://qiita.com/api/v2/items'
                     axios.get(url,{params})
                     .then(function(response){
+                        //バックグラウンドをqiita色にしてみる
+                        document.body.style.backgroundColor = 'rgb(74, 247, 74)'
                         //console.log(response)
                         vm.items = response.data
                     })
