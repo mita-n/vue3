@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="stylesheet" href="css/main.css">-->
+    <style>
+        .large {
+            font-size: 36px;
+        }
+        .text-danger {
+            color:red;
+        }
+        .bg-gray {
+            background-color: gray;
+        }
+        .text-blue {
+            color:blue;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+        <!--インラインメソッドハンドラ
+        v-onの属性に直接処理を書くことができる
+        今回の場合++を入れることでそのまま値を1ずつ増やす(インクリメント)ことができる
+        --> 
+    <div id="app">
+        <p>
+            {{counter}}
+        </p>
+        <p>
+            <button @click="counter++">
+                Click
+            </button>
+        </p>
+    <!--<pre>{{$data}}</pre>-->
+    </div>
+    <script src="https://unpkg.com/vue@3.1.5"></script>
+    <script>
+        const app = Vue.createApp({
+            data : () => ({
+                counter : 0
+            }),
+        })
+        app.mount("#app")
+    </script>
+</body>
+</html>
