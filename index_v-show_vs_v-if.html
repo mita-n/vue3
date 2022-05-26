@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="stylesheet" href="css/main.css">-->
+    <style>
+        .large {
+            font-size: 36px;
+        }
+        .text-danger {
+            color:red;
+        }
+        .bg-gray {
+            background-color: gray;
+        }
+        .text-blue {
+            color:blue;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+        <!--v-showとv-ifの違い
+        v-if 要素をdomから削除追加 高い切り替えコスト v-else v-else-ifが使える
+        v-show CSSのdisplayプロパティを使って表示/非表示している 高い初期描画コスト v-else v-else-if が使えない
+        -->
+    <div id="app">
+
+    <!--<pre>{{$data}}</pre>-->
+    </div>
+    <script src="https://unpkg.com/vue@3.1.5"></script>
+    <script>
+        const app = Vue.createApp({
+            data : () => ({
+
+            }),
+        })
+        app.mount("#app")
+    </script>
+</body>
+</html>
