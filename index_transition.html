@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="stylesheet" href="css/main.css">-->
+    <style>
+        .large {
+            font-size: 36px;
+        }
+        .text-danger {
+            color:red;
+        }
+        .bg-gray {
+            background-color: gray;
+        }
+        .text-blue {
+            color:blue;
+        }
+        .fade-enter-active, .fade-leave-active {
+            transition : opacity 20s;
+        }
+        .fade-enter-from, .fade-leave-to {
+            opacity: 0;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+        <!--トランジションで文字列をフェードアウトフェードインする
+        https://jp.vuejs.org/v2/guide/transitions.html#%E5%8D%98%E4%B8%80%E8%A6%81%E7%B4%A0-%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88%E3%81%AE%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B8%E3%82%B7%E3%83%A7%E3%83%B3
+        余談：「fade」から始めているがこれはtransitonタグのnameをfadeにしているため。
+        fadeではなく他の名称でもいい(dade で試してみたらできた)
+        -->
+    <div id="app">
+        <button @click="show = !show">change</button>
+        <transition name="fade">
+            <p v-show="show">hello transition</p>
+        </transition>
+    <!--<pre>{{$data}}</pre>-->
+    </div>
+    <script src="https://unpkg.com/vue@3.1.5"></script>
+    <script>
+        const app = Vue.createApp({
+            data : () => ({
+                show: true
+            }),
+        })
+        app.mount("#app")
+    </script>
+</body>
+</html>
