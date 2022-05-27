@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="stylesheet" href="css/main.css">-->
+    <style>
+        .large {
+            font-size: 36px;
+        }
+        .text-danger {
+            color:red;
+        }
+        .bg-gray {
+            background-color: gray;
+        }
+        .text-blue {
+            color:blue;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+        <!--vue.jsのv-modelを使ったselectboxの値管理
+        multipleを使った複数選択のパターン
+        v-modelでの結果が複数配列で出てくれる
+        今回もv-forでセレクトボックスを作成
+        -->
+    <div id="app">
+        <select v-model="selected" multiple>
+            <option v-for="option in options" v-bind:value="option.value">{{option.name}}</option>
+        </select>
+        <p>{{selected}}</p>
+    <!--<pre>{{$data}}</pre>-->
+    </div>
+    <script src="https://unpkg.com/vue@3.1.5"></script>
+    <script>
+        const app = Vue.createApp({
+            data : () => ({
+                selected: '',
+                options:[
+                    {name:'red', value: 'Red'},
+                    {name:'green', value: 'Green'},
+                    {name:'blue', value: 'Blue'},
+                ]
+            }),
+        })
+        app.mount("#app")
+    </script>
+</body>
+</html>
