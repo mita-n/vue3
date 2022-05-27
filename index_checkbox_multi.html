@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="stylesheet" href="css/main.css">-->
+    <style>
+        .large {
+            font-size: 36px;
+        }
+        .text-danger {
+            color:red;
+        }
+        .bg-gray {
+            background-color: gray;
+        }
+        .text-blue {
+            color:blue;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+        <!--複数チェックボックス(配列チェックボックス)をVueで扱う
+        作成したred,green,blueのチェックボックスをv-modelで[colors]の配列にいれて
+        配列の結果をpreで確認している
+        教材にはなかったがチェックボックスをv-forで作ってみた
+        -->
+    <div id="app">
+        <!--チェックボックスをv-forで展開-->
+        <ul>
+            <li v-for="checkbox in checkboxes">
+                <label v-bind:for="checkbox.name">{{checkbox.value}}</label>
+                <input type="checkbox" v-bind:id="checkbox.name" v-bind:value="checkbox.value" v-model="colors">
+            </li>
+        </ul>
+        <!--もともとの教材の内容
+        <label for="red">Red</label>
+        <input type="checkbox" id="red" value="Red" v-model="colors">
+        <label for="green">Green</label>
+        <input type="checkbox" id="green" value="Green" v-model="colors">
+        <label for="blue">Blue</label>
+        <input type="checkbox" id="blue" value="Blue" v-model="colors">
+        -->
+    <pre>{{colors}}</pre>
+    </div>
+    <script src="https://unpkg.com/vue@3.1.5"></script>
+    <script>
+        const app = Vue.createApp({
+            data : () => ({
+                colors : [],
+                //チェックボックス作成用のオブジェクト
+                checkboxes:[
+                    {name:'red', value: 'Red'},
+                    {name:'green', value: 'Green'},
+                    {name:'blue', value: 'Blue'},
+                ]
+            }),
+        })
+        app.mount("#app")
+    </script>
+</body>
+</html>
