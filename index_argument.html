@@ -24,10 +24,14 @@
 <body>
         <!--ボタン側の@click側の引数を渡す
         今回の場合Vue.jsをmessageに渡している
+        $eventというは、イベントオブジェクトを明示的に表示することができる
+        今回の場合、messageを引数に使っているのでeventを引数とできない。
+        そのため、$eventを使用して明示的にイベントオブジェクトを取得している
+        $event　はVue.jsが指定している名称なので変更できない($e とかにできない)
         --> 
     <div id="app">
         <p>
-            <button @click="clickHandler('Vue.js')" id="btn">
+            <button @click="clickHandler($event,'Vue.js')" id="btn">
                 Click
             </button>
         </p>
@@ -41,8 +45,10 @@
                 message :''
             }),
             methods : {
-                clickHandler : function(message){
+                clickHandler : function($event,message){
                     console.log(message)
+                    console.log($event)
+                    console.log($event.target)
                     this.message = message
 
                 }
