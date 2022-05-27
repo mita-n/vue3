@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="stylesheet" href="css/main.css">-->
+    <style>
+        .large {
+            font-size: 36px;
+        }
+        .text-danger {
+            color:red;
+        }
+        .bg-gray {
+            background-color: gray;
+        }
+        .text-blue {
+            color:blue;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+        <!--コンポーネントのローカル定義
+        先にやったのはグローバルなコンポーネントだが、
+        スコープを狭めたローカルなコンポーネントを作成
+        注意：コンポーネント名は「ハイフンを1つ以上含むケバブケース」にしなければいけない
+        -->
+    <div id="app">
+        <hello-component></hello-component>
+        <hello-component></hello-component>
+        <hello-component></hello-component>
+    <!--<pre>{{$data}}</pre>-->
+    </div>
+    <script src="https://unpkg.com/vue@3.1.5"></script>
+    <script>
+        //pタグで囲んだhtml要素のテンプレートを作成(この時点ではvueではなく生JS)
+        const helloComponent = {
+            template : '<p>hello!</p>'
+        }
+
+        const app = Vue.createApp({
+            data : () => ({
+
+            }),
+            //ここでconst helloComponentをコンポーネント化
+            //hello-component という名称のコンポーネントを作成し、値にconst helloComponentを
+            //入れてるってこと
+            components : {
+                'hello-component' : helloComponent
+            }
+
+        })
+        app.mount("#app")
+    </script>
+</body>
+</html>
