@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="stylesheet" href="css/main.css">-->
+    <style>
+        .large {
+            font-size: 36px;
+        }
+        .text-danger {
+            color:red;
+        }
+        .bg-gray {
+            background-color: gray;
+        }
+        .text-blue {
+            color:blue;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+        <!--vue.jsでのチェックボックスの扱い
+        v-model="color"とすることでワンセットにできる
+        (v-modelでグループ化してなかったら、redをチェックした状態でgreenをチェックすると
+        両方チェックされたままになってる)
+        普通のhtmlであればnameを設定し、同じ属性にすればいいやつ(name="color" みたいな)-->
+    <div id="app">
+        <!--チェックボックスの回と同じくv-forでラジオボタンを作成してみた
+        あとname属性を入れてみた-->
+        <li v-for="radio in radios">
+            <input type="radio" v-bind:id="radio.name" name="radio-color" v-bind:value="radio.value" v-model="color">
+            <label v-bind:for="radio.name">{{radio.value}}</label>
+        </li>
+        <!--
+        <input type="radio" id="red" value="Red" v-model="color">
+        <label for="red">Red</label>
+        <input type="radio" id="green" value="Green" v-model="color">
+        <label for="green">Green</label>
+        <input type="radio" id="blue" value="Blue" v-model="color">
+        <label for="blue">Blue</label>
+        -->
+    <pre>{{color}}</pre>
+    </div>
+    <script src="https://unpkg.com/vue@3.1.5"></script>
+    <script>
+        const app = Vue.createApp({
+            data : () => ({
+                color : '',
+                //ラジオボタン作成用のオブジェクト
+                radios:[
+                    {name:'red', value: 'Red'},
+                    {name:'green', value: 'Green'},
+                    {name:'blue', value: 'Blue'},
+                ]
+            }),
+        })
+        app.mount("#app")
+    </script>
+</body>
+</html>
